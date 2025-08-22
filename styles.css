@@ -1,65 +1,71 @@
 body {
-    background-color: #000000; /* Preto para sofisticação e elegância */
-    color: #FFD700; /* Amarelo ouro para energia e otimismo */
     font-family: Arial, sans-serif;
+    background-color: #000000; /* Preto */
+    color: #FFFFFF; /* Branco para texto */
     margin: 0;
     padding: 0;
 }
+
 header {
-    background-color: #FFD700; /* Amarelo para chamar atenção no header */
+    background-color: #FFD700; /* Amarelo */
     color: #000000;
-    padding: 10px;
     text-align: center;
+    padding: 20px;
 }
-nav {
-    background-color: #000000;
-    padding: 10px;
+
+h1, h2 {
+    color: #FFD700; /* Amarelo para títulos */
 }
-nav a {
-    color: #FFD700;
-    margin: 0 15px;
-    text-decoration: none;
-}
+
 section {
     padding: 20px;
-    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.promo-container, .bandas-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-.promo, .banda {
-    background-color: #1C1C1C; /* Cinza escuro para contraste */
+
+.promo-item, .banda-item {
+    background-color: #1A1A1A; /* Cinza escuro para cards */
     border: 2px solid #FFD700;
     border-radius: 10px;
-    margin: 10px;
+    margin: 10px 0;
     padding: 10px;
-    width: 300px;
+    text-align: center;
 }
-.promo img, .banda img {
-    width: 100%;
+
+img {
+    max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 5px;
 }
-button {
+
+.botao-menu {
     background-color: #FFD700;
     color: #000000;
-    border: none;
     padding: 10px 20px;
-    cursor: pointer;
-    margin: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
 }
-button:hover {
-    background-color: #FFA500; /* Amarelo mais escuro para hover, indicando interatividade */
+
+.botao-menu:hover {
+    background-color: #E6C200; /* Amarelo mais escuro no hover */
 }
+
 footer {
     background-color: #FFD700;
     color: #000000;
-    padding: 10px;
     text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
-/* Estilos para edição */
-[contenteditable="true"] {
-    border: 1px dashed #FFD700;
+
+/* Responsivo */
+@media (min-width: 768px) {
+    .promo-item, .banda-item {
+        display: inline-block;
+        width: 45%;
+        margin: 10px;
+    }
 }
