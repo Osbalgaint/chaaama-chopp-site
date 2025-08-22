@@ -1,0 +1,65 @@
+body {
+    background-color: #000000; /* Preto para sofisticação e elegância */
+    color: #FFD700; /* Amarelo ouro para energia e otimismo */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #FFD700; /* Amarelo para chamar atenção no header */
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+}
+nav {
+    background-color: #000000;
+    padding: 10px;
+}
+nav a {
+    color: #FFD700;
+    margin: 0 15px;
+    text-decoration: none;
+}
+section {
+    padding: 20px;
+    text-align: center;
+}
+.promo-container, .bandas-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.promo, .banda {
+    background-color: #1C1C1C; /* Cinza escuro para contraste */
+    border: 2px solid #FFD700;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+}
+.promo img, .banda img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+button {
+    background-color: #FFD700;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+button:hover {
+    background-color: #FFA500; /* Amarelo mais escuro para hover, indicando interatividade */
+}
+footer {
+    background-color: #FFD700;
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+}
+/* Estilos para edição */
+[contenteditable="true"] {
+    border: 1px dashed #FFD700;
+}

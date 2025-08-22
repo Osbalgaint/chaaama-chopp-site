@@ -1,0 +1,152 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAAAMA CHOPP - Bar e Restaurante</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>CHAAAMA CHOPP</h1>
+        <p>Bar e Restaurante com o melhor chopp gelado e ambiente animado!</p>
+    </header>
+    
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#promocoes">Promoções</a>
+        <a href="#bandas">Bandas da Semana</a>
+        <a href="#menu">Menu</a>
+        <a href="#localizacoes">Localizações</a>
+        <a href="#contato">Contato</a>
+        <button id="editModeBtn">Ativar Modo Edição</button>
+    </nav>
+    
+    <section id="inicio">
+        <h2>Bem-vindo ao CHAAAMA CHOPP</h2>
+        <p>Venha desfrutar de chopp gelado, pratos deliciosos e música ao vivo! Nosso design em preto e amarelo reflete sofisticação com energia vibrante, inspirado na psicologia das cores para criar um ambiente acolhedor e estimulante online.</p>
+        <button>Peça Agora</button>
+    </section>
+    
+    <section id="promocoes">
+        <h2>Promoções Imperdíveis</h2>
+        <div class="promo-container">
+            <div class="promo">
+                <img src="images/promo1.jpg" alt="Promoção do Domingo" data-edit="image">
+                <h3 data-edit="text">Promoção do Domingo</h3>
+                <p data-edit="text">Aproveite ofertas especiais aos domingos!</p>
+            </div>
+            <div class="promo">
+                <img src="images/promo2.jpg" alt="Promoção da Segunda" data-edit="image">
+                <h3 data-edit="text">Promoção da Segunda</h3>
+                <p data-edit="text">Comece a semana com descontos incríveis!</p>
+            </div>
+            <div class="promo">
+                <img src="images/promo3.jpg" alt="Promoção da Terça" data-edit="image">
+                <h3 data-edit="text">Promoção da Terça</h3>
+                <p data-edit="text">Ofertas exclusivas para animar sua terça!</p>
+            </div>
+            <div class="promo">
+                <img src="images/promo4.jpg" alt="Promoção da Quarta" data-edit="image">
+                <h3 data-edit="text">Promoção da Quarta</h3>
+                <p data-edit="text">Metade da semana com preços pela metade!</p>
+            </div>
+            <div class="promo">
+                <img src="images/promo5.jpg" alt="Promoção de Caldo" data-edit="image">
+                <h3 data-edit="text">Promoção de Caldo</h3>
+                <p data-edit="text">Caldo delicioso de segunda a domingo com desconto!</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="bandas">
+        <h2>Bandas da Semana</h2>
+        <div class="bandas-container">
+            <div class="banda">
+                <img src="https://via.placeholder.com/300x200?text=Banda+Segunda" alt="Banda Segunda" data-edit="image">
+                <h3 data-edit="text">Segunda: Banda Rock Clássico</h3>
+                <p data-edit="text">A partir das 20h.</p>
+            </div>
+            <div class="banda">
+                <img src="images/banda-quinta.jpg" alt="Banda Quinta" data-edit="image">
+                <h3 data-edit="text">Quinta: Samba e Pagode</h3>
+                <p data-edit="text">A partir das 21h. Banda que toca toda quinta-feira!</p>
+            </div>
+            <div class="banda">
+                <img src="https://via.placeholder.com/300x200?text=Banda+Sexta" alt="Banda Sexta" data-edit="image">
+                <h3 data-edit="text">Sexta: Pop Nacional</h3>
+                <p data-edit="text">A partir das 22h.</p>
+            </div>
+            <div class="banda">
+                <img src="https://via.placeholder.com/300x200?text=Banda+Sabado" alt="Banda Sábado" data-edit="image">
+                <h3 data-edit="text">Sábado: Sertanejo Universitário</h3>
+                <p data-edit="text">A partir das 22h.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="menu">
+        <h2>Destaques do Nosso Menu</h2>
+        <p>Chopp Gelado R$10,00 | Porção de Fritas R$25,00 | Hambúrguer Artesanal R$35,00</p>
+    </section>
+    
+    <section id="localizacoes">
+        <h2>Visite-nos</h2>
+        <p>Endereço: Rua Principal, 123, Centro, Cidade - Estado</p>
+        <p>Horário: Segunda a Domingo, 16h às 02h</p>
+        <p>Delivery: Peça pelo WhatsApp (XX) XXXXX-XXXX</p>
+    </section>
+    
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>Email: contato@chaaamachopp.com.br | Telefone: (XX) XXXXX-XXXX</p>
+    </section>
+    
+    <footer>
+        <p>© 2025 CHAAAMA CHOPP. Todos os direitos reservados.</p>
+        <p>Política de Privacidade | Termos de Uso</p>
+        <p>Siga-nos: Instagram | Facebook</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
