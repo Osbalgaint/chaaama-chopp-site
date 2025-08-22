@@ -1,6 +1,6 @@
 body {
-    background: linear-gradient(to bottom, #000000, #1a1a1a); /* Gradiente preto suave para profundidade */
-    color: #FFFFFF; /* Texto branco para contraste */
+    background: linear-gradient(to bottom, #000000, #1a1a1a);
+    color: #FFFFFF;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-color: #FFD700; /* Amarelo vibrante */
+    background-color: #FFD700;
     color: #000000;
     padding: 20px;
     display: flex;
@@ -18,7 +18,7 @@ header {
 }
 
 .logo {
-    width: 150px; /* Ajuste o tamanho da logo */
+    width: 150px;
     height: auto;
     margin-bottom: 10px;
 }
@@ -29,7 +29,7 @@ h1 {
 }
 
 h2 {
-    color: #FFD700; /* Amarelo para títulos */
+    color: #FFD700;
     margin-bottom: 20px;
 }
 
@@ -45,17 +45,17 @@ h2 {
 }
 
 .card, .band-item {
-    background-color: #1a1a1a; /* Cinza escuro para cards, mais suave que preto puro */
-    border: 2px solid #FFD700; /* Borda amarela */
+    background-color: #1a1a1a;
+    border: 2px solid #FFD700;
     border-radius: 10px;
     padding: 20px;
     width: 300px;
-    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2); /* Sombra amarela sutil */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação suave */
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover, .band-item:hover {
-    transform: translateY(-5px); /* Levanta ao hover para interatividade */
+    transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4);
 }
 
@@ -71,7 +71,7 @@ button {
 }
 
 button:hover {
-    background-color: #E6C200; /* Amarelo mais escuro */
+    background-color: #E6C200;
 }
 
 footer {
@@ -83,7 +83,6 @@ footer {
     width: 100%;
 }
 
-/* Responsividade para mobiles */
 @media (max-width: 768px) {
     .cards-container, .bands-container {
         flex-direction: column;
