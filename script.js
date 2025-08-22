@@ -6,12 +6,6 @@ function loadSavedData() {
         const saved = localStorage.getItem(key);
         if (saved) el.textContent = saved;
     });
-    const images = document.querySelectorAll('[data-edit="image"]');
-    images.forEach(img => {
-        const key = img.alt;
-        const savedSrc = localStorage.getItem(key);
-        if (savedSrc) img.src = savedSrc;
-    });
 }
 
 // Função para ativar/desativar modo edição
@@ -25,31 +19,10 @@ editBtn.addEventListener('click', () => {
         el.contentEditable = editMode;
     });
     if (!editMode) {
-        // Salvar mudanças
+        // Salvar mudanças de texto
         texts.forEach(el => {
             const key = el.id || el.textContent.trim();
             localStorage.setItem(key, el.textContent);
-        });
-        // Para imagens, adicionar prompts para nova URL
-        const images = document.querySelectorAll('[data-edit="image"]');
-        images.forEach(img => {
-            if (editMode) return;
-            const newSrc = prompt(`Nova URL para imagem "${img.alt}":`, img.src);
-            if (newSrc) {
-                img.src = newSrc;
-                localStorage.setItem(img.alt, newSrc);
-            }
-        });
-    } else {
-        // Em modo edição, permitir clique em imagem para mudar URL
-        const images = document.querySelectorAll('[data-edit="image"]');
-        images.forEach(img => {
-            img.addEventListener('click', () => {
-                if (editMode) {
-                    const newSrc = prompt(`Nova URL para esta imagem:`, img.src);
-                    if (newSrc) img.src = newSrc;
-                }
-            });
         });
     }
 });
