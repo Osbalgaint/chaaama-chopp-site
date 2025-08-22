@@ -1,0 +1,8 @@
+Utilizar GitHub, Render.com, Bloco de notas, Pasta chamada chaaama-chopp-site no endereço C:\Users\Meu Computador\chaaama-chopp-site
+
+URL depositório é https://github.com/Osbalgaint/chaaama-chopp-site.git
+
+Site no Render é https://chaama-chopp.onrender.com
+
+O Grok precisa fazer um passo a passo para que um iniciante possa realizar todos as tarefas.
+ 
